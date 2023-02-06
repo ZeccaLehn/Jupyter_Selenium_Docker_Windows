@@ -1,0 +1,13 @@
+version: '3'
+services:
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+  jupyter:
+    image: jupyter/minimal-notebook
+    ports:
+      - 8888:8888
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    command: bash -c "jupyter lab --ip=0.0.0.0 --no-browser --allow-root"
